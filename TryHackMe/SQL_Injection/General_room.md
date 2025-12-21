@@ -126,3 +126,4 @@ Differences between databses arise in areas like
   String query = "SELECT * FROM products WHERE category = '"+ input + "'":
   Statement statement = connection.createStatement();
   ResultSet resultSet = statement.executeQuery(query);
+
