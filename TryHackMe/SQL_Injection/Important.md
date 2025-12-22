@@ -54,4 +54,4 @@ SQL Injection Vulnerabilities (Root)
     ├── Time-Based (Child)
     │   └── Attributes: SLEEP() delays, Timing analysis
     └── Out-of-Band (Child)
-        └── Attributes: DNS/HTTP exfiltration, External server contact
+        └── Attributes: DNS/HTTP exfiltration, External server contact  

